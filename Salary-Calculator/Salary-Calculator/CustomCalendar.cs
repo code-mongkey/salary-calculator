@@ -21,19 +21,7 @@ namespace exCalendar
             }
             set
             {
-                ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
-                toolStripMenuItem1.Name = "toolStripMenuItem1";
-                toolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
-                toolStripMenuItem1.Text = "일정등록";
-
-
-                ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-                contextMenuStrip.Font = new System.Drawing.Font("Segoe UI", 9F);
-                contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {toolStripMenuItem1});
-                contextMenuStrip.Name = "contextMenuStrip1";
-                contextMenuStrip.Size = new System.Drawing.Size(123, 26);
-                contextMenuStrip.Text = "일정";
-                likeCal.MenuStrip = contextMenuStrip;
+                likeCal.MenuStrip = value;
             }
         }
 
@@ -93,7 +81,7 @@ namespace exCalendar
             InitializeComponent();
             likeCal._changeDate += new LikeCal.dtDelegate(LikeCal__changeDate);
             likeCal.Dock = DockStyle.Fill;
-            likeCal.SelectDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1));
+            likeCal.SelectDate(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
 
             label_caption.Font = new System.Drawing.Font("맑은 고딕", 22, FontStyle.Bold);
             label_caption.Text = DateTime.Now.Year + "년 " + DateTime.Now.Month + "월";
@@ -226,10 +214,11 @@ namespace exCalendar
         int Month = DateTime.Now.Month;
         public DateTime dtValue = DateTime.Now;
         public dLabel[] TB = new dLabel[42];
+        public dLabel[] TB2 = new dLabel[42];
         int[] redDayList = null;
         string[] redDayName = null;
-        int[] ScheduleDayList = null;
-        string[] ScheduleDayName = null;
+        int[] ScheduleDayList = new int[0];
+        string[] ScheduleDayName = new string[0];
         int[] DutyDayList = null;
         string[] DutyDayName = null;
 
@@ -264,13 +253,13 @@ namespace exCalendar
                 DateTime dt;
                 try
                 {
-                    dt = new DateTime(dtValue.Year, dtValue.Month, int.Parse(((Control)sender).Text), 0, 0, 0);
+                    dt = new DateTime(dtValue.Year, dtValue.Month, int.Parse(((Control)sender).Text.Split('\n')[0]), 0, 0, 0);
                 }
                 catch 
                 {
                     return;
                 }
-                _changeDate = SelectDate;
+                //_changeDate = SelectDate;
                 SelectDate(dt);
                 ScheduleDate(dt);
                 if (UserName != null)
@@ -435,7 +424,10 @@ namespace exCalendar
                 if (ScheduleDayList != null && (index1 = Array.IndexOf(ScheduleDayList, var)) >= 0)
                 {
                     if (ScheduleDayName[index1] != null)
+                    {
                         TB[index].Text += "\n" + ScheduleDayName[index1];
+                        TB[index].BackColor = System.Drawing.Color.FromArgb(255, 255, 230, 200);
+                    }
                 }
             }
 
