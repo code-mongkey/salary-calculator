@@ -135,10 +135,10 @@
     <value>Fill</value>
   </data>
   <data name="label_caption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="label_caption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>517, 56</value>
+    <value>637, 56</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label_caption.TabIndex" type="System.Int32, mscorlib">
@@ -158,69 +158,6 @@
   </data>
   <data name="&gt;&gt;label_caption.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="btnPreviosMonth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="btnPreviosMonth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>맑은 고딕, 18pt, style=Bold</value>
-  </data>
-  <data name="btnPreviosMonth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="btnPreviosMonth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 56</value>
-  </data>
-  <data name="btnPreviosMonth.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnPreviosMonth.Text" xml:space="preserve">
-    <value>◀</value>
-  </data>
-  <data name="&gt;&gt;btnPreviosMonth.Name" xml:space="preserve">
-    <value>btnPreviosMonth</value>
-  </data>
-  <data name="&gt;&gt;btnPreviosMonth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPreviosMonth.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;btnPreviosMonth.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnNextMonth.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="btnNextMonth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>맑은 고딕, 18pt, style=Bold</value>
-  </data>
-  <data name="btnNextMonth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnNextMonth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>577, 0</value>
-  </data>
-  <data name="btnNextMonth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 56</value>
-  </data>
-  <data name="btnNextMonth.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnNextMonth.Text" xml:space="preserve">
-    <value>▶</value>
-  </data>
-  <data name="&gt;&gt;btnNextMonth.Name" xml:space="preserve">
-    <value>btnNextMonth</value>
-  </data>
-  <data name="&gt;&gt;btnNextMonth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnNextMonth.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;btnNextMonth.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>

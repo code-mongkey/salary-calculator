@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomCalendar));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label_caption = new System.Windows.Forms.Label();
-            this.btnPreviosMonth = new System.Windows.Forms.Button();
-            this.btnNextMonth = new System.Windows.Forms.Button();
             this.panel_day = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -50,8 +48,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.label_caption);
-            this.splitContainer1.Panel1.Controls.Add(this.btnPreviosMonth);
-            this.splitContainer1.Panel1.Controls.Add(this.btnNextMonth);
             // 
             // splitContainer1.Panel2
             // 
@@ -65,24 +61,6 @@
             this.label_caption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.label_caption.Name = "label_caption";
             this.label_caption.Click += new System.EventHandler(this.label_caption_Click);
-            // 
-            // btnPreviosMonth
-            // 
-            this.btnPreviosMonth.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnPreviosMonth, "btnPreviosMonth");
-            this.btnPreviosMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnPreviosMonth.Name = "btnPreviosMonth";
-            this.btnPreviosMonth.UseVisualStyleBackColor = false;
-            this.btnPreviosMonth.Click += new System.EventHandler(this.btnPreviosMonth_Click);
-            // 
-            // btnNextMonth
-            // 
-            this.btnNextMonth.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnNextMonth, "btnNextMonth");
-            this.btnNextMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnNextMonth.Name = "btnNextMonth";
-            this.btnNextMonth.UseVisualStyleBackColor = false;
-            this.btnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
             // 
             // panel_day
             // 
@@ -109,7 +87,5 @@
         private System.Windows.Forms.SplitContainer  splitContainer1;
         private System.Windows.Forms.Label label_caption;
         private System.Windows.Forms.Panel panel_day;
-        private System.Windows.Forms.Button btnPreviosMonth;
-        private System.Windows.Forms.Button btnNextMonth;
     }
 }

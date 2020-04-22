@@ -187,5 +187,17 @@ namespace Salary_Calculator
             //customCalendar1.SelectedDate = new DateTime(year, month, day, hour, min, sec);
             //SelectData();
         }
+
+        private void btnPreMonth_Click(object sender, EventArgs e)
+        {
+            customCalendar1.goToPreMonth();
+            SelectData();
+        }
+
+        private void btnNextMonth_Click(object sender, EventArgs e)
+        {
+            customCalendar1.goToNextMonth();
+            SelectData();
+        }
     }
 }

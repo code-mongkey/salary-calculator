@@ -172,20 +172,6 @@ namespace exCalendar
             likeCal.nextMonth();
         }
 
-        private void btnNextMonth_Click(object sender, EventArgs e)
-        {
-            goToNextMonth();
-            SetLabelCaption(likeCal.dtValue);
-            if (_changedDate != null) _changedDate(likeCal.dtValue);
-        }
-
-        private void btnPreviosMonth_Click(object sender, EventArgs e)
-        {
-            goToPreMonth();
-            SetLabelCaption(likeCal.dtValue);
-            if (_changedDate != null) _changedDate(likeCal.dtValue);
-        }
-
         private void SetLabelCaption(DateTime dt)
         {
             label_caption.Text = dt.Year + "년 " + dt.Month + "월";

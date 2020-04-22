@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.cboWorkType = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customCalendar1 = new exCalendar.CustomCalendar();
+            this.btnPreMonth = new System.Windows.Forms.Button();
+            this.btnNextMonth = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -226,8 +228,8 @@
             // col_START_TIME
             // 
             this.col_START_TIME.DataPropertyName = "START_TIME";
-            dataGridViewCellStyle1.NullValue = null;
-            this.col_START_TIME.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = null;
+            this.col_START_TIME.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_START_TIME.Frozen = true;
             this.col_START_TIME.HeaderText = "시작시간";
             this.col_START_TIME.Name = "col_START_TIME";
@@ -295,11 +297,41 @@
             this.customCalendar1.UserName = null;
             this.customCalendar1._changedDate += new exCalendar.CustomCalendar.DateTimeEventHandler(this.customCalendar1__changedDate);
             // 
+            // btnPreMonth
+            // 
+            this.btnPreMonth.BackColor = System.Drawing.Color.Transparent;
+            this.btnPreMonth.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold);
+            this.btnPreMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnPreMonth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnPreMonth.Location = new System.Drawing.Point(12, 13);
+            this.btnPreMonth.Name = "btnPreMonth";
+            this.btnPreMonth.Size = new System.Drawing.Size(60, 56);
+            this.btnPreMonth.TabIndex = 6;
+            this.btnPreMonth.Text = "◀";
+            this.btnPreMonth.UseVisualStyleBackColor = false;
+            this.btnPreMonth.Click += new System.EventHandler(this.btnPreMonth_Click);
+            // 
+            // btnNextMonth
+            // 
+            this.btnNextMonth.BackColor = System.Drawing.Color.Transparent;
+            this.btnNextMonth.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold);
+            this.btnNextMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnNextMonth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnNextMonth.Location = new System.Drawing.Point(620, 13);
+            this.btnNextMonth.Name = "btnNextMonth";
+            this.btnNextMonth.Size = new System.Drawing.Size(60, 56);
+            this.btnNextMonth.TabIndex = 7;
+            this.btnNextMonth.Text = "▶";
+            this.btnNextMonth.UseVisualStyleBackColor = false;
+            this.btnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 632);
+            this.Controls.Add(this.btnNextMonth);
+            this.Controls.Add(this.btnPreMonth);
             this.Controls.Add(this.dgv1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.customCalendar1);
@@ -339,6 +371,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
+        private System.Windows.Forms.Button btnPreMonth;
+        private System.Windows.Forms.Button btnNextMonth;
     }
 }
 
