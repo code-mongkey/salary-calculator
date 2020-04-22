@@ -72,7 +72,7 @@ namespace exCalendar
                 likeCal.schedulerFontSize = value;
             }
         }
-        
+
         public delegate void DateTimeEventHandler(DateTime dt);
         public event DateTimeEventHandler _changedDate;
         LikeCal likeCal = new LikeCal();
@@ -102,7 +102,7 @@ namespace exCalendar
                 return likeCal.dtValue;
             }
         }
-        
+
         private void LikeCal__changeDate(DateTime dt)
         {
             label_caption.Text = dt.Year + "년 " + dt.Month + "월";
@@ -176,12 +176,14 @@ namespace exCalendar
         {
             goToNextMonth();
             SetLabelCaption(likeCal.dtValue);
+            if (_changedDate != null) _changedDate(likeCal.dtValue);
         }
 
         private void btnPreviosMonth_Click(object sender, EventArgs e)
         {
             goToPreMonth();
             SetLabelCaption(likeCal.dtValue);
+            if (_changedDate != null) _changedDate(likeCal.dtValue);
         }
 
         private void SetLabelCaption(DateTime dt)
@@ -217,8 +219,8 @@ namespace exCalendar
         public dLabel[] TB2 = new dLabel[42];
         int[] redDayList = null;
         string[] redDayName = null;
-        int[] ScheduleDayList = new int[0];
-        string[] ScheduleDayName = new string[0];
+        int[] ScheduleDayList = null;
+        string[] ScheduleDayName = null;
         int[] DutyDayList = null;
         string[] DutyDayName = null;
 
@@ -267,6 +269,7 @@ namespace exCalendar
                 if (_changeDate != null) _changeDate(dt);
             }
         }
+
         //달력 그리기
         public void setRowColumns(int rows, int columns)
         {

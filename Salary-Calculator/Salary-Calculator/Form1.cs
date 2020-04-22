@@ -60,7 +60,24 @@ namespace Salary_Calculator
         private void customCalendar1__changedDate(DateTime dt)
         {
             dtStart.Value = customCalendar1.SelectedDate + new TimeSpan(dtStart.Value.Hour, dtStart.Value.Minute, dtStart.Value.Second);
-            dtEnd.Value = customCalendar1.SelectedDate + new TimeSpan(dtEnd.Value.Hour, dtEnd.Value.Minute, dtEnd.Value.Second); ;
+            dtEnd.Value = customCalendar1.SelectedDate + new TimeSpan(dtEnd.Value.Hour, dtEnd.Value.Minute, dtEnd.Value.Second);
+
+            dgv1.ClearSelection();
+            for (int i = 0; i < dgv1.Rows.Count; i++)
+            {
+                if(dtStart.Value.Year.ToString() == dgv1.Rows[i].Cells[1].Value.ToString().Substring(0,4))
+                {
+                    if(dtStart.Value.Month.ToString().PadLeft(2, '0') == dgv1.Rows[i].Cells[1].Value.ToString().Substring(5, 2))
+                    {
+                        if (dtStart.Value.Day.ToString().PadLeft(2,'0') == dgv1.Rows[i].Cells[1].Value.ToString().Substring(8, 2))
+                        {
+                            dgv1.Rows[i].Selected = true;
+                            return;
+                        }
+                    }
+
+                }
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -123,11 +140,6 @@ namespace Salary_Calculator
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cboWorkType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboWorkType.Text == "오전근무")
@@ -152,6 +164,28 @@ namespace Salary_Calculator
                 dtEnd.Enabled = true;
             }
 
+        }
+
+        private void 근무추가ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dgv1_SelectionChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int year = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(0, 4)));
+            int month = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(5, 2)));
+            int day = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(8, 2)));
+            int hour = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(11, 2)));
+            int min = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(14, 2)));
+            int sec = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(17, 2)));
+            //customCalendar1.SelectedDate = new DateTime(year, month, day);
+            //customCalendar1__changedDate(new DateTime(year, month, day));
+            //customCalendar1.SelectedDate = new DateTime(year, month, day, hour, min, sec);
+            //SelectData();
         }
     }
 }

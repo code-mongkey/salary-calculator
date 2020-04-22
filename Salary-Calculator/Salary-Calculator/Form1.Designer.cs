@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.cboWorkType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,16 +43,18 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv1 = new System.Windows.Forms.DataGridView();
-            this.customCalendar1 = new exCalendar.CustomCalendar();
             this.col_USER_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_START_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_END_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_WORKING_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_DAILY_PAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_WORK_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customCalendar1 = new exCalendar.CustomCalendar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -72,6 +75,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 179);
             this.panel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(68, 148);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "label5";
             // 
             // cboWorkType
             // 
@@ -199,19 +211,8 @@
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv1.Size = new System.Drawing.Size(640, 423);
             this.dgv1.TabIndex = 5;
-            // 
-            // customCalendar1
-            // 
-            this.customCalendar1.dutyFontSize = 0F;
-            this.customCalendar1.Location = new System.Drawing.Point(12, 13);
-            this.customCalendar1.Name = "customCalendar1";
-            this.customCalendar1.schedulerFontSize = 0F;
-            this.customCalendar1.SelectedDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
-            this.customCalendar1.Size = new System.Drawing.Size(668, 607);
-            this.customCalendar1.TabIndex = 0;
-            this.customCalendar1.UserGrade = ((long)(0));
-            this.customCalendar1.UserName = null;
-            this.customCalendar1._changedDate += new exCalendar.CustomCalendar.DateTimeEventHandler(this.customCalendar1__changedDate);
+            this.dgv1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
+            this.dgv1.SelectionChanged += new System.EventHandler(this.dgv1_SelectionChanged);
             // 
             // col_USER_ID
             // 
@@ -225,8 +226,8 @@
             // col_START_TIME
             // 
             this.col_START_TIME.DataPropertyName = "START_TIME";
-            dataGridViewCellStyle6.NullValue = null;
-            this.col_START_TIME.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.NullValue = null;
+            this.col_START_TIME.DefaultCellStyle = dataGridViewCellStyle1;
             this.col_START_TIME.Frozen = true;
             this.col_START_TIME.HeaderText = "시작시간";
             this.col_START_TIME.Name = "col_START_TIME";
@@ -266,14 +267,33 @@
             this.col_WORK_TYPE.Name = "col_WORK_TYPE";
             this.col_WORK_TYPE.ReadOnly = true;
             // 
-            // label5
+            // contextMenuStrip1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(68, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.근무추가ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 26);
+            // 
+            // 근무추가ToolStripMenuItem
+            // 
+            this.근무추가ToolStripMenuItem.Name = "근무추가ToolStripMenuItem";
+            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.근무추가ToolStripMenuItem.Text = "근무추가";
+            this.근무추가ToolStripMenuItem.Click += new System.EventHandler(this.근무추가ToolStripMenuItem_Click);
+            // 
+            // customCalendar1
+            // 
+            this.customCalendar1.dutyFontSize = 0F;
+            this.customCalendar1.Location = new System.Drawing.Point(12, 13);
+            this.customCalendar1.MenuStrip = this.contextMenuStrip1;
+            this.customCalendar1.Name = "customCalendar1";
+            this.customCalendar1.schedulerFontSize = 0F;
+            this.customCalendar1.SelectedDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
+            this.customCalendar1.Size = new System.Drawing.Size(668, 607);
+            this.customCalendar1.TabIndex = 0;
+            this.customCalendar1.UserGrade = ((long)(0));
+            this.customCalendar1.UserName = null;
+            this.customCalendar1._changedDate += new exCalendar.CustomCalendar.DateTimeEventHandler(this.customCalendar1__changedDate);
             // 
             // Form1
             // 
@@ -290,6 +310,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -316,6 +337,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_DAILY_PAY;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_WORK_TYPE;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
     }
 }
 
