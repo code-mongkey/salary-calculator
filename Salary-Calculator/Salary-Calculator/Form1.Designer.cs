@@ -49,11 +49,12 @@
             this.col_WORKING_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_DAILY_PAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_WORK_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customCalendar1 = new exCalendar.CustomCalendar();
             this.btnPreMonth = new System.Windows.Forms.Button();
             this.btnNextMonth = new System.Windows.Forms.Button();
+            this.customCalendar1 = new exCalendar.CustomCalendar();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.근무삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -269,34 +270,6 @@
             this.col_WORK_TYPE.Name = "col_WORK_TYPE";
             this.col_WORK_TYPE.ReadOnly = true;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.근무추가ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 26);
-            // 
-            // 근무추가ToolStripMenuItem
-            // 
-            this.근무추가ToolStripMenuItem.Name = "근무추가ToolStripMenuItem";
-            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.근무추가ToolStripMenuItem.Text = "근무추가";
-            this.근무추가ToolStripMenuItem.Click += new System.EventHandler(this.근무추가ToolStripMenuItem_Click);
-            // 
-            // customCalendar1
-            // 
-            this.customCalendar1.dutyFontSize = 0F;
-            this.customCalendar1.Location = new System.Drawing.Point(12, 13);
-            this.customCalendar1.MenuStrip = this.contextMenuStrip1;
-            this.customCalendar1.Name = "customCalendar1";
-            this.customCalendar1.schedulerFontSize = 0F;
-            this.customCalendar1.SelectedDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
-            this.customCalendar1.Size = new System.Drawing.Size(668, 607);
-            this.customCalendar1.TabIndex = 0;
-            this.customCalendar1.UserGrade = ((long)(0));
-            this.customCalendar1.UserName = null;
-            this.customCalendar1._changedDate += new exCalendar.CustomCalendar.DateTimeEventHandler(this.customCalendar1__changedDate);
-            // 
             // btnPreMonth
             // 
             this.btnPreMonth.BackColor = System.Drawing.Color.Transparent;
@@ -324,6 +297,42 @@
             this.btnNextMonth.Text = "▶";
             this.btnNextMonth.UseVisualStyleBackColor = false;
             this.btnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
+            // 
+            // customCalendar1
+            // 
+            this.customCalendar1.dutyFontSize = 0F;
+            this.customCalendar1.Location = new System.Drawing.Point(12, 13);
+            this.customCalendar1.MenuStrip = null;
+            this.customCalendar1.Name = "customCalendar1";
+            this.customCalendar1.schedulerFontSize = 0F;
+            this.customCalendar1.SelectedDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
+            this.customCalendar1.Size = new System.Drawing.Size(668, 607);
+            this.customCalendar1.TabIndex = 0;
+            this.customCalendar1.UserGrade = ((long)(0));
+            this.customCalendar1.UserName = null;
+            this.customCalendar1._changedDate += new exCalendar.CustomCalendar.DateTimeEventHandler(this.customCalendar1__changedDate);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.근무추가ToolStripMenuItem,
+            this.근무삭제ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // 근무추가ToolStripMenuItem
+            // 
+            this.근무추가ToolStripMenuItem.Name = "근무추가ToolStripMenuItem";
+            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.근무추가ToolStripMenuItem.Text = "근무추가";
+            this.근무추가ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무추가ToolStripMenuItem_Click);
+            // 
+            // 근무삭제ToolStripMenuItem
+            // 
+            this.근무삭제ToolStripMenuItem.Name = "근무삭제ToolStripMenuItem";
+            this.근무삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.근무삭제ToolStripMenuItem.Text = "근무삭제";
+            this.근무삭제ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무삭제ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -369,10 +378,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_DAILY_PAY;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_WORK_TYPE;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
         private System.Windows.Forms.Button btnPreMonth;
         private System.Windows.Forms.Button btnNextMonth;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 근무삭제ToolStripMenuItem;
     }
 }
 

@@ -29,6 +29,9 @@ namespace Salary_Calculator
             database.OpenDB();
             database.ClosedDB();
 
+
+            customCalendar1.MenuStrip = contextMenuStrip1;
+
             dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0, DateTimeKind.Local);
             dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0, DateTimeKind.Local);
 
@@ -82,6 +85,11 @@ namespace Salary_Calculator
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            AddWorkTime();
+        }
+
+        private void AddWorkTime()
+        {
             DateTime startTime = dtStart.Value;
             DateTime endTime = dtEnd.Value;
 
@@ -89,11 +97,19 @@ namespace Salary_Calculator
 
             TimeSpan workTime = endTime - startTime;
 
-            if (workTime.TotalMilliseconds < 0 || workTime.TotalHours > 24)
+            if (workTime.TotalMilliseconds < 0)
             {
-                MessageBox.Show("근무시간을 확인해주세요");
+                MessageBox.Show("종료시간이 시작시간보다 빠를 수 없습니다");
                 return;
             }
+
+            if (workTime.TotalHours > 24)
+            {
+                MessageBox.Show("24시간이상 연속근무로 추가할 수 없습니다");
+                return;
+            }
+            
+
 
             //string date = dtStart.Value.ToShortDateString();
             string sStartTime = dtStart.Value.ToString("yyyy-MM-dd HH:mm:ss");
@@ -122,6 +138,11 @@ namespace Salary_Calculator
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            DeleteWorkTime();
+        }
+
+        private void DeleteWorkTime()
+        {
             for (int i = dgv1.RowCount - 1; i >= 0; i--)
             {
                 if (dgv1.Rows[i].Selected)
@@ -133,11 +154,6 @@ namespace Salary_Calculator
                 }
             }
             SelectData();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void cboWorkType_SelectedIndexChanged(object sender, EventArgs e)
@@ -166,10 +182,6 @@ namespace Salary_Calculator
 
         }
 
-        private void 근무추가ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
         private void dgv1_SelectionChanged(object sender, EventArgs e)
         {
         }
@@ -184,7 +196,7 @@ namespace Salary_Calculator
             int sec = Convert.ToInt32((dgv1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(17, 2)));
             //customCalendar1.SelectedDate = new DateTime(year, month, day);
             //customCalendar1__changedDate(new DateTime(year, month, day));
-            //customCalendar1.SelectedDate = new DateTime(year, month, day, hour, min, sec);
+            customCalendar1.SelectedDate = new DateTime(year, month, day, hour, min, sec);
             //SelectData();
         }
 
@@ -198,6 +210,18 @@ namespace Salary_Calculator
         {
             customCalendar1.goToNextMonth();
             SelectData();
+        }
+
+        private void 근무추가ToolStripMenuItem_Click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                AddWorkTime();
+        }
+
+        private void 근무삭제ToolStripMenuItem_Click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                DeleteWorkTime();
         }
     }
 }

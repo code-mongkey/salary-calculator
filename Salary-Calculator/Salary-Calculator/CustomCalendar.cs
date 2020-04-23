@@ -298,7 +298,7 @@ namespace exCalendar
                     {
                         tb.ForeColor = System.Drawing.Color.Black;
                         tb.BackColor = System.Drawing.Color.FromArgb(255, 246, 229);
-                        tb.MouseClick += new MouseEventHandler(likeCal_MouseClick);
+                        tb.MouseDown += new MouseEventHandler(likeCal_MouseClick);
                         tb.TextAlign = System.Drawing.ContentAlignment.TopLeft;
                         tb.MouseHover += new EventHandler(dLabel_MouseOver);
                         TB[j + ((i-1) * 7)] = tb;    
