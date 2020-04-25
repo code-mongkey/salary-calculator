@@ -1,6 +1,6 @@
 ﻿namespace Salary_Calculator
 {
-    partial class Form1
+    partial class Form_RegistSchedule
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblMonthPay = new System.Windows.Forms.Label();
             this.cboWorkType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.근무삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -63,7 +64,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cboWorkType);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -79,14 +79,14 @@
             this.panel1.Size = new System.Drawing.Size(640, 179);
             this.panel1.TabIndex = 1;
             // 
-            // label5
+            // lblMonthPay
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(68, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
+            this.lblMonthPay.AutoSize = true;
+            this.lblMonthPay.Location = new System.Drawing.Point(1140, 598);
+            this.lblMonthPay.Name = "lblMonthPay";
+            this.lblMonthPay.Size = new System.Drawing.Size(11, 12);
+            this.lblMonthPay.TabIndex = 9;
+            this.lblMonthPay.Text = "0";
             // 
             // cboWorkType
             // 
@@ -212,7 +212,7 @@
             this.dgv1.Name = "dgv1";
             this.dgv1.RowTemplate.Height = 23;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(640, 423);
+            this.dgv1.Size = new System.Drawing.Size(640, 387);
             this.dgv1.TabIndex = 5;
             this.dgv1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
             this.dgv1.SelectionChanged += new System.EventHandler(this.dgv1_SelectionChanged);
@@ -318,27 +318,38 @@
             this.근무추가ToolStripMenuItem,
             this.근무삭제ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
             // 
             // 근무추가ToolStripMenuItem
             // 
             this.근무추가ToolStripMenuItem.Name = "근무추가ToolStripMenuItem";
-            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.근무추가ToolStripMenuItem.Text = "근무추가";
             this.근무추가ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무추가ToolStripMenuItem_Click);
             // 
             // 근무삭제ToolStripMenuItem
             // 
             this.근무삭제ToolStripMenuItem.Name = "근무삭제ToolStripMenuItem";
-            this.근무삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.근무삭제ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.근무삭제ToolStripMenuItem.Text = "근무삭제";
             this.근무삭제ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무삭제ToolStripMenuItem_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1078, 598);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "예상월급";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 632);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblMonthPay);
             this.Controls.Add(this.btnNextMonth);
             this.Controls.Add(this.btnPreMonth);
             this.Controls.Add(this.dgv1);
@@ -353,6 +364,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -377,12 +389,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_WORKING_TIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_DAILY_PAY;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_WORK_TYPE;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblMonthPay;
         private System.Windows.Forms.Button btnPreMonth;
         private System.Windows.Forms.Button btnNextMonth;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 근무삭제ToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
     }
 }
 

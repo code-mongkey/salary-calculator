@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Salary_Calculator
 {
-    public partial class Form1 : Form
+    public partial class Form_RegistSchedule : Form
     {
         private const int HOUR_PAY = 8350;
         private Database database;
 
-        public Form1()
+        public Form_RegistSchedule()
         {
             InitializeComponent();
         }
@@ -34,6 +34,8 @@ namespace Salary_Calculator
 
             dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0, DateTimeKind.Local);
             dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0, DateTimeKind.Local);
+
+            dgv1.Columns[4].DefaultCellStyle.Format = "n0";
 
             SelectData();
         }
@@ -57,7 +59,7 @@ namespace Salary_Calculator
             customCalendar1.SetSchedual(days, names, customCalendar1.SelectedDate);
 
             int total = dgv1.Rows.Cast<DataGridViewRow>().Sum(t => Convert.ToInt32(t.Cells[4].Value));
-            label5.Text = total.ToString();
+            lblMonthPay.Text = total.ToString("n0");
         }
 
         private void customCalendar1__changedDate(DateTime dt)
