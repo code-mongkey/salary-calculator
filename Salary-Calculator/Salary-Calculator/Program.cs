@@ -16,7 +16,7 @@ namespace Salary_Calculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_ScheduleList());
+            Application.Run(new Form_RegistSchedule());
         }
     }
 }

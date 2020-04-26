@@ -26,9 +26,6 @@ namespace Salary_Calculator
 
             database = new Database();
             database.ConnectDB();
-            database.OpenDB();
-            database.ClosedDB();
-
 
             customCalendar1.MenuStrip = contextMenuStrip1;
 
@@ -182,10 +179,6 @@ namespace Salary_Calculator
                 dtEnd.Enabled = true;
             }
 
-        }
-
-        private void dgv1_SelectionChanged(object sender, EventArgs e)
-        {
         }
 
         private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
