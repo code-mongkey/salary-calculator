@@ -12,8 +12,8 @@ namespace Salary_Calculator
 {
     public partial class Form_RegistSchedule : Form
     {
-        private const int HOUR_PAY = 8350;
         private Database database;
+        private Utilities.INIFile mConfig = new Utilities.INIFile(Application.StartupPath + "\\Config.ini");
 
         public Form_RegistSchedule()
         {
@@ -22,23 +22,32 @@ namespace Salary_Calculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cboWorkType.SelectedIndex = 0;
+            cboPartTime.SelectedIndex = 0;
 
             database = new Database();
             database.ConnectDB();
 
-            customCalendar1.MenuStrip = contextMenuStrip1;
-
-            dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0, DateTimeKind.Local);
-            dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0, DateTimeKind.Local);
+            int MorningStartHour = mConfig.GetInt32("Setting", "MorningStartHour", 6);
+            int MorningStartMin = mConfig.GetInt32("Setting", "MorningStartMin", 0);
+            int MorningEndHour = mConfig.GetInt32("Setting", "MorningEndHour", 6);
+            int MorningEndMin = mConfig.GetInt32("Setting", "MorningEndMin", 0);
+            
+            dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, MorningStartHour, MorningStartMin, 0, DateTimeKind.Local);
+            dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, MorningEndHour, MorningEndMin, 0, DateTimeKind.Local);
 
             dgv1.Columns[4].DefaultCellStyle.Format = "n0";
 
             SelectData();
+
+            SetCombo();
+
+            SetContextMenu();
         }
 
         private void SelectData()
         {
+            double hourPay = mConfig.GetInt32("Setting", "HourPay", 8590);
+
             string[] column = new string[3] { "USER_ID", "FROM_DATE", "TO_DATE" };
             string st = new DateTime(customCalendar1.SelectedDate.Year, customCalendar1.SelectedDate.Month, 1, 0, 0, 0).ToString("yyyy-MM-dd HH:mm:ss");
             string end = new DateTime(customCalendar1.SelectedDate.Year, customCalendar1.SelectedDate.Month + 1, 1, 0, 0, 0).ToString("yyyy-MM-dd HH:mm:ss");
@@ -51,12 +60,20 @@ namespace Salary_Calculator
             for (int i = 0; i < dgv1.Rows.Count; i++)
             {
                 days[i] = Convert.ToInt32(dgv1.Rows[i].Cells[1].Value.ToString().Substring(8, 2));
-                names[i] = dgv1.Rows[i].Cells[5].Value.ToString();
+                names[i] = dgv1.Rows[i].Cells[3].Value.ToString();
             }
             customCalendar1.SetSchedual(days, names, customCalendar1.SelectedDate);
 
+            int totalWorkTime = dgv1.Rows.Cast<DataGridViewRow>().Sum(t => Convert.ToInt32(t.Cells[3].Value));
+            lblTotalWorkTime.Text = totalWorkTime.ToString("n0");
+
             int total = dgv1.Rows.Cast<DataGridViewRow>().Sum(t => Convert.ToInt32(t.Cells[4].Value));
             lblMonthPay.Text = total.ToString("n0");
+
+            double holiPay = totalWorkTime / 40.0 * 8 * hourPay;
+            lblHoliPay.Text = holiPay.ToString("n0");
+
+            lblTotalPay.Text = (total + holiPay).ToString("n0");
         }
 
         private void customCalendar1__changedDate(DateTime dt)
@@ -114,8 +131,8 @@ namespace Salary_Calculator
             string sStartTime = dtStart.Value.ToString("yyyy-MM-dd HH:mm:ss");
             string sEndTime = dtEnd.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
-            double pay = workTime.TotalHours * HOUR_PAY;
-            string work_type = cboWorkType.Text;
+            double pay = workTime.TotalHours * mConfig.GetInt32("Setting", "HourPay", 8590);
+            string work_type = cboPartTime.Text;
 
             DataTable table = (DataTable)dgv1.DataSource;
             DataRow dr = table.NewRow();
@@ -157,27 +174,41 @@ namespace Salary_Calculator
 
         private void cboWorkType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboWorkType.Text == "오전근무")
-            {
-                dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0, DateTimeKind.Local);
-                dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0, DateTimeKind.Local);
+            //int curYear = customCalendar1.SelectedDate.Year;
+            //int curMonth = customCalendar1.SelectedDate.Month;
+            //int curDay = customCalendar1.SelectedDate.Day;
 
-                dtStart.Enabled = false;
-                dtEnd.Enabled = false;
-            }
-            else if(cboWorkType.Text == "오후근무")
-            {
-                dtStart.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0, DateTimeKind.Local);
-                dtEnd.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0, DateTimeKind.Local);
+            //if (cboPartTime.Text == "오전근무")
+            //{
+            //    int MorningStartHour = mConfig.GetInt32("Setting", "MorningStartHour", 6);
+            //    int MorningStartMin = mConfig.GetInt32("Setting", "MorningStartMin", 0);
+            //    int MorningEndHour = mConfig.GetInt32("Setting", "MorningEndHour", 6);
+            //    int MorningEndMin = mConfig.GetInt32("Setting", "MorningEndMin", 0);
 
-                dtStart.Enabled = false;
-                dtEnd.Enabled = false;
-            }
-            else
-            {
-                dtStart.Enabled = true;
-                dtEnd.Enabled = true;
-            }
+            //    dtStart.Value = new DateTime(curYear, curMonth, curDay, MorningStartHour, MorningStartMin, 0, DateTimeKind.Local);
+            //    dtEnd.Value = new DateTime(curYear, curMonth, curDay, MorningEndHour, MorningEndMin, 0, DateTimeKind.Local);
+
+            //    dtStart.Enabled = false;
+            //    dtEnd.Enabled = false;
+            //}
+            //else if(cboPartTime.Text == "오후근무")
+            //{
+            //    int EveningStartHour = mConfig.GetInt32("Setting", "EveningStartHour", 6);
+            //    int EveningStartMin = mConfig.GetInt32("Setting", "EveningStartMin", 0);
+            //    int EveningEndHour = mConfig.GetInt32("Setting", "EveningEndHour", 6);
+            //    int EveningEndMin = mConfig.GetInt32("Setting", "EveningEndMin", 0);
+
+            //    dtStart.Value = new DateTime(curYear, curMonth, curDay, EveningStartHour, EveningStartMin, 0, DateTimeKind.Local);
+            //    dtEnd.Value = new DateTime(curYear, curMonth, curDay, EveningEndHour, EveningEndMin, 0, DateTimeKind.Local);
+
+            //    dtStart.Enabled = false;
+            //    dtEnd.Enabled = false;
+            //}
+            //else
+            //{
+            //    dtStart.Enabled = true;
+            //    dtEnd.Enabled = true;
+            //}
 
         }
 
@@ -207,16 +238,90 @@ namespace Salary_Calculator
             SelectData();
         }
 
-        private void 근무추가ToolStripMenuItem_Click(object sender, MouseEventArgs e)
+        private void btnSetting_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-                AddWorkTime();
+            using (Form_Setting frm = new Form_Setting())
+            {
+                frm.ShowDialog();
+                frm.Close();
+            }
         }
 
-        private void 근무삭제ToolStripMenuItem_Click(object sender, MouseEventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SelectData();
+            SetCombo();
+            SetContextMenu();
+        }
+
+        private void SetCombo()
+        {
+            cboPartTime.Text = "";
+            cboPartTime.Items.Clear();
+            Dictionary<string, string> PartTimeList = mConfig.GetSectionValues("PartTimeList");
+            foreach (KeyValuePair<string, string> list in PartTimeList)
+            {
+                cboPartTime.Items.Add(list.Value);
+            }
+        }
+
+        private void SetContextMenu()
+        {
+            ContextMenuStrip menu = new ContextMenuStrip();
+            ToolStripMenuItem menuItem;
+
+            Dictionary<string, string> PartTimeList = mConfig.GetSectionValues("PartTimeList");
+            foreach (KeyValuePair<string, string> list in PartTimeList)
+            {
+                menuItem = new ToolStripMenuItem();
+                menuItem.Text = list.Value + " 추가";
+                menuItem.MouseDown += new MouseEventHandler(this.AddMenuItem_Click);
+                menu.Items.Add(menuItem);
+            }
+
+            menuItem = new ToolStripMenuItem();
+            menuItem.Text = "근무삭제";
+            menuItem.MouseDown += new MouseEventHandler(this.DelMenuItem_Click);
+            menu.Items.Add(menuItem);
+
+            customCalendar1.MenuStrip = menu;
+        }
+
+
+        private void AddMenuItem_Click(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
+                string name = ((ToolStripMenuItem)(sender)).Text.Replace(" 추가", "");
+                cboPartTime.Text = name;
+                int stHour = mConfig.GetInt32(name, "START_HOUR", 0);
+                int stMin = mConfig.GetInt32(name, "START_MIN", 0);
+
+                int endHour = mConfig.GetInt32(name, "END_HOUR", 0);
+                int endMin = mConfig.GetInt32(name, "END_MIN", 0);
+
+                dtStart.Value = new DateTime(dtStart.Value.Year, dtStart.Value.Month, dtStart.Value.Day, stHour, stMin, 0, DateTimeKind.Local);
+                dtEnd.Value = new DateTime(dtEnd.Value.Year, dtEnd.Value.Month, dtEnd.Value.Day, endHour, endMin, 0, DateTimeKind.Local);
+
+                AddWorkTime();
+            }
+        }
+
+        private void DelMenuItem_Click(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
                 DeleteWorkTime();
+            }
+        }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            using (Form_ScheduleList frm = new Form_ScheduleList())
+            {
+                frm.ShowDialog();
+                frm.Close();
+            }
         }
     }
 }

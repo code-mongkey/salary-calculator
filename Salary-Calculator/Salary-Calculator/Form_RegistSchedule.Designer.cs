@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cboWorkType = new System.Windows.Forms.ComboBox();
+            this.cboPartTime = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDel = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
@@ -51,24 +51,31 @@
             this.col_WORK_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPreMonth = new System.Windows.Forms.Button();
             this.btnNextMonth = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.근무추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.근무삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.lblTotalWorkTime = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblHoliPay = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblTotalPay = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnList = new System.Windows.Forms.Button();
             this.customCalendar1 = new exCalendar.CustomCalendar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.cboWorkType);
+            this.panel1.Controls.Add(this.cboPartTime);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnDel);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.dtEnd);
             this.panel1.Controls.Add(this.dtStart);
@@ -79,20 +86,20 @@
             this.panel1.Size = new System.Drawing.Size(640, 179);
             this.panel1.TabIndex = 1;
             // 
-            // cboWorkType
+            // cboPartTime
             // 
-            this.cboWorkType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboWorkType.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cboWorkType.FormattingEnabled = true;
-            this.cboWorkType.Items.AddRange(new object[] {
+            this.cboPartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPartTime.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboPartTime.FormattingEnabled = true;
+            this.cboPartTime.Items.AddRange(new object[] {
             "오전근무",
             "오후근무",
             "기타근무"});
-            this.cboWorkType.Location = new System.Drawing.Point(119, 55);
-            this.cboWorkType.Name = "cboWorkType";
-            this.cboWorkType.Size = new System.Drawing.Size(155, 29);
-            this.cboWorkType.TabIndex = 8;
-            this.cboWorkType.SelectedIndexChanged += new System.EventHandler(this.cboWorkType_SelectedIndexChanged);
+            this.cboPartTime.Location = new System.Drawing.Point(119, 55);
+            this.cboPartTime.Name = "cboPartTime";
+            this.cboPartTime.Size = new System.Drawing.Size(155, 29);
+            this.cboPartTime.TabIndex = 8;
+            this.cboPartTime.SelectedIndexChanged += new System.EventHandler(this.cboWorkType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -134,6 +141,16 @@
             this.btnDel.UseVisualStyleBackColor = true;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(18, 107);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(106, 34);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(385, 107);
@@ -147,7 +164,6 @@
             // dtEnd
             // 
             this.dtEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtEnd.Enabled = false;
             this.dtEnd.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtEnd.Location = new System.Drawing.Point(416, 55);
@@ -158,7 +174,6 @@
             // dtStart
             // 
             this.dtStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtStart.Enabled = false;
             this.dtStart.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtStart.Location = new System.Drawing.Point(416, 12);
@@ -168,7 +183,6 @@
             // 
             // txtName
             // 
-            this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtName.Location = new System.Drawing.Point(119, 12);
             this.txtName.Name = "txtName";
@@ -190,7 +204,7 @@
             // lblMonthPay
             // 
             this.lblMonthPay.AutoSize = true;
-            this.lblMonthPay.Location = new System.Drawing.Point(1140, 598);
+            this.lblMonthPay.Location = new System.Drawing.Point(1007, 598);
             this.lblMonthPay.Name = "lblMonthPay";
             this.lblMonthPay.Size = new System.Drawing.Size(11, 12);
             this.lblMonthPay.TabIndex = 9;
@@ -212,7 +226,7 @@
             this.dgv1.Name = "dgv1";
             this.dgv1.RowTemplate.Height = 23;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(640, 387);
+            this.dgv1.Size = new System.Drawing.Size(640, 351);
             this.dgv1.TabIndex = 5;
             this.dgv1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
             // 
@@ -297,36 +311,106 @@
             this.btnNextMonth.UseVisualStyleBackColor = false;
             this.btnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.근무추가ToolStripMenuItem,
-            this.근무삭제ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
-            // 
-            // 근무추가ToolStripMenuItem
-            // 
-            this.근무추가ToolStripMenuItem.Name = "근무추가ToolStripMenuItem";
-            this.근무추가ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.근무추가ToolStripMenuItem.Text = "근무추가";
-            this.근무추가ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무추가ToolStripMenuItem_Click);
-            // 
-            // 근무삭제ToolStripMenuItem
-            // 
-            this.근무삭제ToolStripMenuItem.Name = "근무삭제ToolStripMenuItem";
-            this.근무삭제ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.근무삭제ToolStripMenuItem.Text = "근무삭제";
-            this.근무삭제ToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.근무삭제ToolStripMenuItem_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1078, 598);
+            this.label5.Location = new System.Drawing.Point(988, 573);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.Size = new System.Drawing.Size(83, 12);
             this.label5.TabIndex = 9;
-            this.label5.Text = "예상월급";
+            this.label5.Text = "근무시간*시급";
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Location = new System.Drawing.Point(1332, 12);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(44, 34);
+            this.btnSetting.TabIndex = 4;
+            this.btnSetting.Text = "설정";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
+            // lblTotalWorkTime
+            // 
+            this.lblTotalWorkTime.AutoSize = true;
+            this.lblTotalWorkTime.Location = new System.Drawing.Point(815, 598);
+            this.lblTotalWorkTime.Name = "lblTotalWorkTime";
+            this.lblTotalWorkTime.Size = new System.Drawing.Size(11, 12);
+            this.lblTotalWorkTime.TabIndex = 9;
+            this.lblTotalWorkTime.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(795, 573);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "근무시간";
+            // 
+            // lblHoliPay
+            // 
+            this.lblHoliPay.AutoSize = true;
+            this.lblHoliPay.Location = new System.Drawing.Point(919, 598);
+            this.lblHoliPay.Name = "lblHoliPay";
+            this.lblHoliPay.Size = new System.Drawing.Size(11, 12);
+            this.lblHoliPay.TabIndex = 9;
+            this.lblHoliPay.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(899, 573);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "주휴수당";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(964, 585);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(11, 12);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "+";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1079, 585);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 12);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "=";
+            // 
+            // lblTotalPay
+            // 
+            this.lblTotalPay.AutoSize = true;
+            this.lblTotalPay.Location = new System.Drawing.Point(1115, 598);
+            this.lblTotalPay.Name = "lblTotalPay";
+            this.lblTotalPay.Size = new System.Drawing.Size(11, 12);
+            this.lblTotalPay.TabIndex = 9;
+            this.lblTotalPay.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1096, 573);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "예상월급";
+            // 
+            // btnList
+            // 
+            this.btnList.Location = new System.Drawing.Point(1332, 52);
+            this.btnList.Name = "btnList";
+            this.btnList.Size = new System.Drawing.Size(44, 34);
+            this.btnList.TabIndex = 4;
+            this.btnList.Text = "조회";
+            this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // customCalendar1
             // 
@@ -346,10 +430,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1344, 632);
+            this.ClientSize = new System.Drawing.Size(1382, 632);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblHoliPay);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblTotalWorkTime);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblTotalPay);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblMonthPay);
             this.Controls.Add(this.btnNextMonth);
+            this.Controls.Add(this.btnList);
+            this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.btnPreMonth);
             this.Controls.Add(this.dgv1);
             this.Controls.Add(this.panel1);
@@ -361,7 +455,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,7 +473,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtEnd;
         private System.Windows.Forms.DataGridView dgv1;
-        private System.Windows.Forms.ComboBox cboWorkType;
+        private System.Windows.Forms.ComboBox cboPartTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_USER_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_START_TIME;
@@ -391,10 +484,18 @@
         private System.Windows.Forms.Label lblMonthPay;
         private System.Windows.Forms.Button btnPreMonth;
         private System.Windows.Forms.Button btnNextMonth;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 근무추가ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 근무삭제ToolStripMenuItem;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblTotalWorkTime;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblHoliPay;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblTotalPay;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnList;
     }
 }
 
